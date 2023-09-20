@@ -1,5 +1,6 @@
 PRAGMA foriegn_keys = ON;
 
+
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS questions;
 DROP TABLE IF EXISTS question_follows;
@@ -56,5 +57,15 @@ CREATE TABLE question_likes (
 INSERT INTO 
     users(f_name, l_name)
 VALUES
-    ('Jacob', 'Seidner')
-    ('Eltion' '')
+    ('Jacob', 'Seidner'),
+    ('Eltion', 'Behrami');
+
+INSERT INTO 
+    questions(title, body, user_id)
+VALUES
+    ('Hello?', 'How are you?', (SELECT id FROM users WHERE f_name = 'Jacob')),
+    ('Is anybody there?', 'Am I alone?', (SELECT id FROM users WHERE f_name = 'Jacob'));
+
+
+
+
